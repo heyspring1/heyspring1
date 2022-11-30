@@ -1,0 +1,90 @@
+https://m.blog.naver.com/sijin921/221919344862
+
+https://www.w3schools.com/howto/howto_js_tabs.asp
+
+https://nyweb.tistory.com/entry/%ED%83%AD%EB%A9%94%EB%89%B4-%EC%95%88%EC%97%90-Swiper
+
+https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_tabs_close
+
+https://web.dev/i18n/ko/building-a-tabs-component/
+
+scroll-behavior: smoth;
+
+https://nyweb.tistory.com/entry/%ED%83%AD%EB%A9%94%EB%89%B4-%EC%95%88%EC%97%90-Swiper
+
+https://codesandbox.io/s/taeb2-c4q5j?file=/src/App.vue:2552-2563
+
+https://jsfiddle.net/this_mong/o8tva3gk/2/
+
+https://imivory.tistory.com/m/40
+
+https://shubamba.tistory.com/52
+
+https://velog.io/@hyenees/swiper-navigation-bar
+
+https://alvarotrigo.com/blog/html-css-tabs/
+
+https://lily-im.tistory.com/38
+
+Swipeable Tabs
+CSS tab indicator
+html tab order move
+
+//탭 이벤트
+
+var changeNum = 1; // 증가, 감소 버튼 위한 전역변수 선언 (int)
+
+function tabChange(num){
+
+    $(".tab_on").attr("class",'tab');
+    $("#tab_" + num).attr("class",'tab_on');
+
+    changeNum = parseInt(num); // 여기서 num이 (string) 이여서 변수 대입이 안되므로 (int)로 형변환
+
+    // 탭 박스 초기화
+    $(".tab_box1").css("display",'none');
+    $(".tab_box2").css("display",'none');
+    $(".tab_box3").css("display",'none');
+    $(".tab_box4").css("display",'none');
+    $(".tab_box5").css("display",'none');
+    $(".tab_box6").css("display",'none');
+
+    if(num == '1'){
+        $(".tab_box"+ num ).css("display",'block');
+    }
+    else if(num == '2'){
+        $(".tab_box"+ num ).css("display",'block');
+    }    
+    else if(num == '3'){
+        $(".tab_box"+ num ).css("display",'block');
+    }    
+    else if(num == '4'){
+        $(".tab_box"+ num ).css("display",'block');
+    }    
+    else if(num == '5'){
+        $(".tab_box"+ num ).css("display",'block');
+    }    
+    else if(num == '6'){
+        $(".tab_box"+ num ).css("display",'block');
+    }
+}
+
+function numChange(type){ // type , num은 변수임 암거나 해도 상관없음
+
+    if(type == '1'){
+        if(changeNum == 6){ // 최댓값 방지
+            return;
+        }
+        else{
+            num = changeNum + 1;
+            tabChange(num);
+        }
+    }
+    else{
+        if(changeNum == 1){ // 0 방지
+            return;
+        }
+        num = changeNum - 1;
+        tabChange(num);
+    }
+}

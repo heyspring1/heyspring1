@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<title>타이틀</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="swiper.min.css">
+<script src="swiper.js"></script>
+
+<style>
+* {margin: 0;padding: 0;box-sizing: border-box;font-family: 'Noto Sans KR', sans-serif;box-sizing: border-box;}
+ul,ol,li {list-style: none;}
+
+/* 탭메뉴 */
+.tab_wrap {max-width: 800px;margin: 50px auto 0;padding: 0 15px;}
+.tab_wrap .tit_list {position: relative;font-size: 0;}
+.tab_wrap .tit_list:before {content:'';position: absolute;bottom: 0;left: 0;width: 100%;height: 1px;background: #ddd;z-index: 1;}
+.tab_wrap .tit_list > li {display: inline-block;vertical-align: top;margin-right: 3px;}
+.tab_wrap .tit_list > li a {display: inline-block;padding: 10px 15px;border: 1px solid #fff;border-radius:4px 4px 0 0;font-size: 14px;color: #000;text-decoration: none;}
+.tab_wrap .tit_list > li a:hover {background: #efefef;border-color: #efefef;}
+.tab_wrap .tit_list > li.active a {position: relative;border-color: #ddd;border-bottom: 1px solid #fff;background: #fff;color: #337ab7;z-index: 2;}
+.tab_wrap .tab_con {border: 1px solid #ddd;border-top: none;}
+.tab_wrap .tab_con .tab_list {display: none;padding: 15px;}
+
+/* 슬라이드 */
+.slider {text-align: center;font-size: 0;}
+.slider .inner {overflow: hidden;width: 100%;margin: 0 auto;}
+.slide_list > li {width: 25%;height: 150px;text-align: center;background: #ade9ff;font-size: 20px;line-height: 150px;color: #000;}
+.slider .swiper-prev,
+.slider .swiper-next {display: inline-block;width: 35px;height: 35px;margin:30px 15px 0;background:url('images/arrow.png') center center no-repeat;background-size: cover;text-indent: -999em;cursor: pointer;}
+.slider .swiper-prev {transform: rotateY(180deg);}
+
+</style>
+</head>
+<body>
+<div class="tab_wrap">
+    <!-- 탭메뉴 제목 -->
+    <ul class="tit_list">
+        <!-- 디폴트 선택 li에 active 클래스 추가 -->
+        <li class="active"><a href="#con01">1번째 탭</a></li>
+        <li><a href="#con02">2번째 탭</a></li>
+        <li><a href="#con03">3번째 탭</a></li>
+    </ul>
+    <!-- 탭메뉴 컨텐츠 -->
+    <div class="tab_con">
+        <div id="con01" class="tab_list">
+            <!-- swiper-slide -->
+            <div class="slider">
+                <div class="inner">
+                    <ul class="swiper-wrapper slide_list">
+                        <li class="swiper-slide">slider1</li>
+                        <li class="swiper-slide">slider2</li>
+                        <li class="swiper-slide">slider3</li>
+                        <li class="swiper-slide">slider4</li>
+                        <li class="swiper-slide">slider5</li>
+                    </ul>
+                </div>
+                <div class="swiper-prev">이전</div>
+                <div class="swiper-next">다음</div>
+            </div>
+        </div>
+            
+        <div id="con02" class="tab_list">
+            <!-- swiper-slide -->
+            <div class="slider">
+                <div class="inner">
+                    <ul class="swiper-wrapper slide_list">
+                        <li class="swiper-slide">slider1</li>
+                        <li class="swiper-slide">slider2</li>
+                        <li class="swiper-slide">slider3</li>
+                        <li class="swiper-slide">slider4</li>
+                        <li class="swiper-slide">slider5</li>
+                    </ul>
+                </div>
+                <div class="swiper-prev">이전</div>
+                <div class="swiper-next">다음</div>
+            </div>
+        </div>
+
+        <div id="con03" class="tab_list">
+            <!-- swiper-slide -->
+            <div class="slider">
+                <div class="inner">
+                    <ul class="swiper-wrapper slide_list">
+                        <li class="swiper-slide">slider1</li>
+                        <li class="swiper-slide">slider2</li>
+                        <li class="swiper-slide">slider3</li>
+                        <li class="swiper-slide">slider4</li>
+                        <li class="swiper-slide">slider5</li>
+                    </ul>
+                </div>
+                <div class="swiper-prev">이전</div>
+                <div class="swiper-next">다음</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+$(document).ready(function () {
+    tab();
+})
+
+function tab(){
+    //탭메뉴 클릭할 때 실행
+    $(".tab_wrap .tit_list > li a").on( "click", function(e) {
+        e.preventDefault();
+
+        //초기화
+        $(".tab_wrap .tit_list > li").removeClass("active");
+        $(".tab_wrap .tab_list").hide(); 
+        
+        //실행
+        $(this).parent().addClass("active"); 
+        var activeTab = $(this).attr("href");
+        $(activeTab).show();
+    });
+
+    //초기 탭 설정
+    var activeChk = 0;
+    $(".tab_wrap .tit_list > li").each(function(i) { 
+        if ($(this).hasClass("active")){
+            $(this).addClass("active"); 
+            $(this).find('a').trigger("click");
+            activeChk ++
+        }
+    });
+
+    //active 지정 안했을 시 첫 탭메뉴 선택
+    if(activeChk == 0){
+        $(".tab_wrap .tit_list > li:first-child a").trigger("click");
+    }
+    slider();//슬라이드 실행
+}
+
+function slider(){
+    var swiperArr = []; //swiper 슬라이드 변수
+    var slideInx = []; //현재 슬라이드 index
+    var slideNum = []; //슬라이드 개수
+    var loopChk = ''; //무한반복 체크
+    var viewNum = ''; //슬라이드 개수 (옵션)
+    var winWChk = ''; //디바이스 체크
+    
+    $(".slider").each(function(index){
+        var $this = $(this);
+        //슬라이드 인덱스 클래스 추가
+        $this.addClass("slider-" + index);
+        //슬라이드, 옵션 배열 추가
+        swiperArr.push(undefined);
+        slideInx.push(0);
+        slideNum.push($this.find('.swiper-slide').length)
+        
+        $(window).on('load resize', function (){
+            winW = window.innerWidth;
+            if(winWChk != 'pc' && winW > 1280){ //PC 버전으로 전환할 때
+                winWChk = 'pc'
+                sliderAct();
+            }else if(winWChk != 'ta' && 1281 > winW && winW > 767){ //태블릿 버전으로 전환할 때
+                winWChk = 'ta'
+                sliderAct();
+            }else if(winWChk != 'mo' && winW < 768){ //모바일 버전으로 전환할 때
+                winWChk = 'mo'
+                sliderAct();
+            }
+        })
+    })
+    
+    function sliderAct(){
+        $(".slider").each(function(index){
+            //슬라이드 초기화
+            if(swiperArr[index] != undefined) {
+                swiperArr[index].destroy();
+                swiperArr[index] = undefined;
+            }
+
+            //slidesPerView 옵션 설정
+            if (winWChk == 'pc'){
+                viewNum = 4;
+            }else if(winWChk == 'ta'){
+                viewNum = 3;
+            }else{
+                viewNum = 2;
+            }
+
+            //loop 옵션 체크
+            if (slideNum[index] > viewNum){
+                loopChk = true;
+            }else{ 
+                loopChk = false;
+            }
+
+            swiperArr[index] = new Swiper('.slider-' + index + ' .inner', {
+                slidesPerView: viewNum,
+                initialSlide :slideInx[index],
+                spaceBetween: 14,
+                observer: true, 
+                observeParents: true,
+                loop: loopChk,
+                navigation: {
+                    nextEl: $('.slider-' + index).find('.swiper-next'),
+                    prevEl: $('.slider-' + index).find('.swiper-prev'),
+                },
+                on: {
+                    activeIndexChange: function () {
+                        if($('.slider-' + index).parent('.tab_list').css('display') != 'none'){
+                            slideInx[index] = this.realIndex; //현재 슬라이드 index 갱신
+                        }
+                    }
+                },
+            });
+            
+            //슬라이드 배열 값 추가
+            if(swiperArr[index] == undefined) {
+                swiperArr[index] = swiper;
+            }
+        });
+    }
+}
+
+</script>
+</body>
+</html>

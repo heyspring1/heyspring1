@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/css/swiper.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/js/swiper.min.js"></script>
+
+    <title>Document</title>
+</head>
+
+
+<body>
+    <style>
+        button {
+            border: none
+        }
+
+        .societyGroupTab {
+            width: 400px;
+            box-sizing: border-box;
+            position: relative;
+            background: pink
+        }
+
+        .societyGroupTab:after {
+            content: '';
+            display: block;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: #e1e1e1;
+        }
+
+        .societyGroupTab .swiper-slide {
+            padding: 0 11px;
+            width: auto;
+        }
+
+        .societyGroupTab .swiper-slide:first-child {
+            padding-left: 0;
+        }
+
+        .societyGroupTab .swiper-slide:last-child {
+            padding-right: 0;
+        }
+
+        .societyGroupTab .swiper-slide a {
+            display: block;
+        }
+
+        .societyGroupTab .swiper-slide a:hover .societyGroupTab__text {
+            font-weight: bold;
+        }
+
+        .societyGroupTab__text {
+            padding: 15px 10px 12px 10px;
+            box-sizing: border-box;
+            position: relative;
+            display: inline-block;
+            white-space: nowrap;
+            font-size: 15px;
+            line-height: 1;
+            color: #333;
+        }
+
+        .on .societyGroupTab__text {
+            color: #000;
+            font-weight: bold;
+        }
+
+        .on .societyGroupTab__text:after {
+            content: '';
+            display: block;
+            position: absolute;
+            left: 0px;
+            right: 0px;
+            bottom: 0;
+            width: 100%;
+            height: 1px;
+            background: #000;
+        }
+
+        .societyGroupTab__next,
+        .societyGroupTab__prev {
+            position: absolute;
+            top: 0;
+            width: 30px;
+            height: calc(100% - 1px);
+            z-index: 100;
+            font-size: 0;
+        }
+
+        .societyGroupTab__next.swiper-button-disabled,
+        .societyGroupTab__prev.swiper-button-disabled {
+            display: none;
+        }
+
+        .societyGroupTab__next {
+            right: 0;
+            background: -webkit-linear-gradient(left, rgba(255, 255, 255, 0) 0%, white 100%);
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, white 100%);
+        }
+
+        .societyGroupTab__prev {
+            left: 0;
+            background: -webkit-linear-gradient(left, white 0%, rgba(255, 255, 255, 0) 100%);
+            background: linear-gradient(90deg, white 0%, rgba(255, 255, 255, 0) 100%);
+        }
+
+        body {
+            position: relative;
+            height: 100%;
+        }
+
+        body {
+            background: #eee;
+            font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            color: #000;
+            margin: 0;
+            padding: 0;
+        }
+
+        .swiper {
+            width: 100%;
+            height: 100%;
+        }
+
+        .swiper-slide {
+            text-align: center;
+            font-size: 18px;
+            background: #fff;
+
+            /* Center slide text vertically */
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            -webkit-align-items: center;
+            align-items: center;
+        }
+
+        .swiper-slide img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
+
+
+    <div class="swiper-container societyGroupTab">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"><a href="javascript:void(0);"><span class="societyGroupTab__text">Group
+                        A</span></a></div>
+            <div class="swiper-slide"><a href="javascript:void(0);"><span class="societyGroupTab__text">Group
+                        B</span></a></div>
+            <div class="swiper-slide"><a href="javascript:void(0);"><span class="societyGroupTab__text">Group
+                        C</span></a></div>
+            <div class="swiper-slide"><a href="javascript:void(0);"><span class="societyGroupTab__text">Group
+                        D</span></a></div>
+            <div class="swiper-slide"><a href="javascript:void(0);"><span class="societyGroupTab__text">Group
+                        E</span></a></div>
+            <div class="swiper-slide"><a href="javascript:void(0);"><span class="societyGroupTab__text">Group
+                        F</span></a></div>
+            <div class="swiper-slide"><a href="javascript:void(0);"><span class="societyGroupTab__text">Group
+                        7</span></a></div>
+            <div class="swiper-slide"><a href="javascript:void(0);"><span class="societyGroupTab__text">Group
+                        8</span></a></div>
+            <div class="swiper-slide"><a href="javascript:void(0);"><span class="societyGroupTab__text">Group
+                        9</span></a></div>
+            <div class="swiper-slide"><a href="javascript:void(0);"><span class="societyGroupTab__text">Group
+                        10</span></a></div>
+        </div>
+
+    </div>
+    <div class="btn">
+        <div onclick="numChange('1')">
+            증가
+        </div>
+        <div onclick="numChange('2')">
+            감소
+        </div>
+    </div>
+    <script>
+        function numChange(type) {
+            // type , num은 변수임 암거나 해도 상관없음
+
+            if (type == "1") {
+                if (changeNum == 10) {
+                    // 최댓값 방지
+                    return;
+                } else {
+                    num = changeNum + 1;
+                    tabChange(num);
+                }
+            } else {
+                if (changeNum == 1) {
+                    // 0 방지
+                    return;
+                }
+                num = changeNum - 1;
+                tabChange(num);
+            }
+        }
+    </script>
+
+
+    <style>
+        .btn {
+            position: absolute;
+            top: 200px;
+            left: 200px;
+        }
+
+        .btn div {
+            border: 1px solid #dae1e6;
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn div:hover {
+            background-color: #000;
+            color: red;
+        }
+    </style>
+    <script>
+        var swiper = new Swiper('.societyGroupTab', {
+            slidesPerView: 'auto',
+            preventClicks: true,
+            preventClicksPropagation: false,
+            observer: true,
+            observeParents: true,
+            nextButton: ".swiper-button-next",
+            prevButton: ".swiper-button-prev",
+        });
+        var $lankTitle = $('.societyGroupTab .swiper-slide a');
+        $lankTitle.click(function () {
+            var target = $(this).parent();
+            $lankTitle.parent().removeClass('on')
+            target.addClass('on');
+            muCenter(target);
+        })
+        var swiper = new Swiper("swiper-container societyGroupTab", {
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+        });
+
+        // 클릭요소 중앙정렬
+        function muCenter(target) {
+            var snbwrap = $('.societyGroupTab .swiper-wrapper');
+            var targetPos = target.position();
+            var boxWidth = $('.societyGroupTab').width();
+            var wrapWidth = 0;
+            snbwrap.find('.swiper-slide').each(function () { wrapWidth += $(this).outerWidth(); })
+
+            var selectTargetPos = targetPos.left + target.outerWidth() / 2;
+            var pos;
+            if (selectTargetPos <= boxWidth / 2) {
+                pos = 0
+                $('.societyGroupTab__prev').addClass('swiper-button-disabled'); // 사이드 그라데이션
+            }
+            else if (wrapWidth - selectTargetPos <= boxWidth / 2) {
+                pos = wrapWidth - boxWidth;
+                $('.societyGroupTab__next').addClass('swiper-button-disabled'); // 사이드 그라데이션
+            }
+            else {
+                pos = targetPos.left - (boxWidth / 2) + (target.outerWidth() / 2);
+                $('.societyGroupTab__prev, .societyGroupTab__next').removeClass('swiper-button-disabled'); // 사이드 그라데이션
+            }
+
+            if (wrapWidth > boxWidth) {
+                setTimeout(function () {
+                    snbwrap.css({
+                        "transform": "translate3d(" + (pos * -1) + "px, 0, 0)",
+                        "transition-duration": "500ms"
+                    })
+                }, 200);
+            }
+        }
+    </script>
+</body>
+
+</html>
